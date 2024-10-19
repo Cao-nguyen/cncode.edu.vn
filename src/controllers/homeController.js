@@ -1,7 +1,7 @@
 export const handleHome = (req, res) => {
-    return res.render('home.ejs');
+    return res.render('home');
 }
 
 export const handleUser = (req, res) => {
-    return res.render('user.ejs');
+    return res.render('user');
 }
