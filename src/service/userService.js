@@ -21,4 +21,11 @@ const createUser = (email, username, password) => {
     )
 }
 
-export default createUser
+const getUser = () => {
+    let users = []
+    connection.query(
+        'SELECT * from users'
+    )
+}
+
+export default { createUser, getUser }
