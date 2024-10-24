@@ -26,6 +26,43 @@
                 <button type="submit" class="btn btn-primary">Đăng kí</button>
             </div>
         </form>
+
+        <div class="list-user">
+            <h3 class="mt-10 mb-3">Danh sách người dùng</h3>
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% userList.forEach(function(item, index) { %>
+                        <tr>
+                            <td scope="row">
+                                <%= item.id %>
+                            </td>
+                            <td>
+                                <%= item.username %>
+                            </td>
+                            <td>
+                                <%= item.email %>
+                            </td>
+                            <td>
+                                <a class="btn btn-warning" href="/update-user/<%= item.id %>">
+                                    Sửa
+                                </a>
+                                <form style="display: inline" action="/delete-user/<%= item.id %>" method="POST">
+                                    <button class="btn btn-danger">Xoá</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 
