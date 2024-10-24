@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import path from 'path'
 import initWebRoutes from './routes/web.js'
+import connection from './config/db.js'
 import { fileURLToPath } from 'url'
 
 dotenv.config()
@@ -20,6 +21,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
+
+// test connection
+connection()
 
 // init web routes
 initWebRoutes(app)
