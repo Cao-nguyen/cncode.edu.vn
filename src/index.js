@@ -3,13 +3,17 @@ import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import path from 'path'
 import initWebRoutes from './routes/web.js'
+import initApiRoutes from './routes/api.js'
 import connection from './config/db.js'
+import configCors from './config/cors.js'
 import { fileURLToPath } from 'url'
 
 dotenv.config()
 
 const app = express()
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 8080
+
+configCors(app)
 
 // config body parser
 app.use(bodyParser.json())
@@ -27,6 +31,7 @@ connection()
 
 // init web routes
 initWebRoutes(app)
+initApiRoutes(app)
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
