@@ -25,6 +25,7 @@ const handleRegister = async (req, res) => {
             DT: ''
         })
 
+
     } catch (e) {
         return res.status(500).json({
             EM: 'error from server',

@@ -7,6 +7,9 @@ import initApiRoutes from './routes/api.js'
 import connection from './config/db.js'
 import configCors from './config/cors.js'
 import { fileURLToPath } from 'url'
+const { exec } = require("child_process");
+const cors = require("cors");
+const fs = require("fs");
 
 dotenv.config()
 
@@ -26,8 +29,18 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
+// TEST
+
 // test connection
 connection()
+
+// CORS
+app.use(cors({
+    origin: 'http://localhost:3000', // Chỉ cho phép yêu cầu từ frontend
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}));
+
 
 // init web routes
 initWebRoutes(app)
